@@ -43,16 +43,35 @@ $$J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(h_\theta(x^{(i)})) + (1 
 
 ### Key Metrics
 
-- **Accuracy**: $\frac{TP + TN}{TP + TN + FP + FN}$ (Overall correctness)
-- **Precision**: $\frac{TP}{TP + FP}$ (Quality of positive predictions) — _Focus here if FP is costly._
-- **Recall (Sensitivity)**: $\frac{TP}{TP + FN}$ (Ability to find all positives) — _Focus here if FN is costly (e.g., Cancer detection)._
-- **F1-Score**: $2 \times \frac{Precision \times Recall}{Precision + Recall}$ (Harmonic mean of Precision & Recall).
-- **Specificity**: $\frac{TN}{TN + FP}$ (Ability to find all negatives).
+- **Accuracy**: $\frac{TP + TN}{TP + TN + FP + FN}$
+  - **Definition**: The ratio of correctly predicted observations to the total observations. It indicates overall correctness.
+  - **Use Case**: Best used when the target classes are well-balanced.
+
+- **Precision (Positive Predictive Value)**: $\frac{TP}{TP + FP}$
+  - **Definition**: The ratio of correctly predicted positive observations to the total predicted positives.
+  - **Use Case**: Focus here when the cost of False Positives is high (e.g., Spam detection).
+
+- **Recall (Sensitivity / True Positive Rate)**: $\frac{TP}{TP + FN}$
+  - **Definition**: The ratio of correctly predicted positive observations to all actual positives.
+  - **Use Case**: Focus here when the cost of False Negatives is high (e.g., Cancer detection, Fraud detection).
+- **F1-Score**: $2 \times \frac{Precision \times Recall}{Precision + Recall}$
+  - **Definition**: The harmonic mean of Precision and Recall. It provides a balance between the two.
+  - **Use Case**: Best used when you have an imbalanced dataset or when you want to seek a balance between Precision and Recall.
+
+- **Specificity (True Negative Rate)**: $\frac{TN}{TN + FP}$
+  - **Definition**: The ratio of correctly predicted negative observations to all actual negatives.
+  - **Use Case**: Important in clinical tests where we want to ensure healthy people are not misdiagnosed.
 
 ### ROC and AUC
 
-- **ROC (Receiver Operating Characteristic)**: A plot of True Positive Rate (Recall) vs. False Positive Rate (1 - Specificity) at various thresholds.
-- **AUC (Area Under Curve)**: Represents the degree or measure of separability. Higher AUC means the model is better at predicting 0s as 0s and 1s as 1s.
+- **ROC Curve (Receiver Operating Characteristic)**:
+  - **Definition**: A probability curve that plots the **True Positive Rate (Recall)** against the **False Positive Rate (1 - Specificity)** at various threshold settings. It shows the performance of a classification model at all classification thresholds.
+- **AUC (Area Under the Curve)**:
+  - **Definition**: Represents the probability that the model ranks a random positive example more highly than a random negative example.
+  - **Interpretation**:
+    - AUC = 1: Perfect classifier.
+    - AUC = 0.5: No better than random guessing.
+    - Higher AUC means the model is better at distinguishing between classes.
 
 ---
 
